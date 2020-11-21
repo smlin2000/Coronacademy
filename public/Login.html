@@ -52,7 +52,7 @@ body#bp-default #wp-admin-bar .padder {
 h2 {
     font-size: 30px;
     font-weight: 300;
-    color: #03A9F4;
+    color: #f96332;
 }
 
 .form-group {
@@ -86,7 +86,7 @@ h2 {
     -webkit-transform: scale(0.75);
     -moz-transform: scale(0.75);
     transform: scale(0.75);
-    color: #03A9F4 !important;
+    color: #f96332 !important;
 }
 
 .form-control {
@@ -168,7 +168,7 @@ h2 {
 
 form#girisyap input {
     border-bottom: 1px solid #cdcdcd;
-    color: #959595;
+    color: #020202;
     font-size: 14px;
     width: 100%;
     resize: none;
@@ -194,7 +194,7 @@ form#girisyap input {
 #girisyap h2 {
     font-size: 28px;
     font-weight: 400;
-    color: #0BAFBF;
+    color:#f96332;
     line-height: 35px;
 }
 
@@ -223,7 +223,7 @@ form#girisyap input {
 form#girisyap .girisbtn {
     width: auto;
     float: right;
-    background: #03A9F4;
+    background: #f96332;
     padding: 10px 16px;
     cursor: pointer;
     font-size: 14px;
@@ -250,7 +250,7 @@ form#girisyap .girisbtn {
 }
 
 form#girisyap .girisbtn:hover {
-    background: #0288D1;
+    background: #f96332;
     -webkit-box-shadow: 0 4px 7px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
     -moz-box-shadow: 0 4px 7px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
     box-shadow: 0 4px 7px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
@@ -263,7 +263,7 @@ form#girisyap .girisbtn:hover {
     padding: 10px 16px;
     font-family: Roboto;
     font-size: 14px;
-    color: #03A9F4;
+    color: #f96332;
     font-weight: 600;
     margin: 0 10px !important;
     line-height: 16px;
@@ -303,7 +303,7 @@ form#girisyap .girisbtn:hover {
     right: 0;
     width: 50%;
     height: 100%;
-    background: #03A9F4 url(http://ertekinn.com/loginsignup/signup.jpg);
+    background: #f96332 url(http://ertekinn.com/loginsignup/signup.jpg);
     background-size: cover;
     background-position: 50% 50%;
 }
@@ -313,7 +313,7 @@ form#girisyap .girisbtn:hover {
     left: 0;
     width: 50%;
     height: 100%;
-    background: #03A9F4 url(http://ertekinn.com/loginsignup/login.png);
+    background: url(https://images.unsplash.com/photo-1555116505-38ab61800975?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
     background-size: cover;
     background-position: 50% 50%;
 }
@@ -367,12 +367,12 @@ form#girisyap .girisbtn:hover {
     <form name="login-form" id="girisyap" id="sidebar-user-login" method="post" onsubmit="return false;" action = "signedIn.html">
 
       <div class="form-group">
-        <label class="control-label" for="inputNormal">Username</label>
-        <input type="text" name="log" class="bp-suggestions form-control" cols="50" rows="10" ></input>
+        
+        <input type="text" name="log" class="bp-suggestions form-control" placeholder = "Username" cols="50" rows="10" ></input>
       </div>
     <div class="form-group soninpt">
-      <label class="control-label" for="inputNormal">Password</label>
-      <input type="password" name="pwd" class="bp-suggestions form-control" cols="50" rows="10"></input>
+      
+      <input type="password" name="pwd" class="bp-suggestions form-control" placeholder = "Password" cols="50" rows="10"></input>
   </div>
   <input type="submit" value="Login" class="girisbtn" tabindex="100"/>
   </form>
