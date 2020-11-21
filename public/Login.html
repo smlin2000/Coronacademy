@@ -377,10 +377,10 @@
             }).then(res => res.json())
 
             if (response) {
-                localStorage.setItem("name", response.username)
-                localStorage.setItem("password", response.password)
-                localStorage.setItem("email", response.email)
-                localStorage.setItem("phone", response.phone)
+                for (let data in response) {
+                    localStorage.setItem(data, JSON.stringify(response[data]))
+                }
+
                 location.href = "/Home.html"
             } else {
                 document.getElementById("name").style.backgroundColor = "red"

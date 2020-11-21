@@ -62,7 +62,7 @@
       <div class="row">
         <div class="col-md-12">
           <h2 class="mb-2 text-center" id="CollabName"><b>Welcome back, Friend!</b></h2>
-          <script style=""> var localUser = localStorage.getItem('name')
+          <script> var localUser = localStorage.getItem('name')
             if(localUser != null)
             {
               document.getElementById("CollabName").innerHTML = "<b>Welcome back, " + localUser + "!</b>";
@@ -88,7 +88,7 @@
       </div>
     </div>
   </div>
-  <div class="py-5 bg-gray" style="">
+  <div class="py-5 bg-gray">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
@@ -211,7 +211,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="assets/js/parallax.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-  <script style="">
+  <script>
     $(document).ready(function() {
       $('[data-toggle="popover"]').popover();
       $('[data-toggle="tooltip"]').tooltip();
@@ -222,9 +222,14 @@
       });
     });
   </script>
-  <script style="">
+  <script>
     var ws = new WebSocket("ws://localhost:8080")
     var container = document.getElementById("messageContainer")
+    let name = localStorage.getItem("name")
+    name = name === "undefined" ? "Anon" + (Math.random() * 10000 | 0) : name
+    ws.onopen = conn => {
+      ws.send(name)
+    }
     ws.onmessage = msg => {
       let msgs = msg.data.split("\n")
       for (let content of msgs) {
@@ -236,7 +241,7 @@
     var textbox = document.getElementById("textbox")
     textbox.onkeyup = e => {
       if (e.which === 13) { // Enter key
-        ws.send(localStorage.getItem('name') + textbox.value.trim())
+        ws.send(textbox.value.trim())
         textbox.value = ""
       }
     }
