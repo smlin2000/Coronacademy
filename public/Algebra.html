@@ -24,6 +24,11 @@
       callFrame.join({ url: 'https://collab.daily.co/Breakout' })
     }
     </script>
+  <script style=""> function vidchat2(){
+    callFrame = window.DailyIframe.createFrame();
+      callFrame.join({ url: 'https://collab.daily.co/Breakout2' })
+    }
+    </script>
   <nav class="navbar navbar-expand-lg bg-primary navbar-dark fixed-top">
     <div class="container">
       <img src="assets/img/logo.png" alt="Logo" height="80" width="246">
@@ -148,7 +153,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6 h-25">
+        <div class="col-md-6">
           <div class="table-responsive">
             <table class="table">
               <thead>
@@ -217,7 +222,7 @@
                 <tr>
                   <td><b>Kristi Glover</b></td>
                   <td>Just wanted to chat with people while studying.</td>
-                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Join Call</button></td>
+                  <td><button class="btn btn-primary" type="button" onclick="vidchat2()">Join Call</button></td>
                 </tr>
               </tbody>
             </table>
@@ -330,7 +335,6 @@
         localStorage.clear()
       }
     }
-
     name = name || "Anon" + (Math.random() * 10000 | 0)
     ws.onopen = conn => {
       ws.send(name)
