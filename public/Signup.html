@@ -325,29 +325,96 @@
 </head>
 
 <body>
-    </div>
-    <div class="right w-100 text-center" style="">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:900,900italic,500,400italic,100,700italic,300,700,500italic,100italic,300italic,400" rel="stylesheet" type="text/css" style="">
+  <div id="fback">
+    <div class="girisback"></div>
+    <div class="kayitback"></div>
+  </div>
+  <div id="textbox">
+    <div class="right w-100">
       <img class="img-fluid d-block mx-auto" src="assets/img/logo.png" width="200px" style="	transform:  translateY(100px) ;">
       <div id="ic">
-        <h2 style="">Sign Up</h2>
-        <form name="login-form" id="girisyap" method="post" onsubmit="return false;" action="signedIn.html">
+        <h2 class="text-center">Sign Up</h2>
+        <form name="login-form">
           <div class="form-group">
-            <input type="text" name="log" class="bp-suggestions form-control" placeholder="Username" cols="50" rows="10">
+            <input type="text" name="log" id="name" class="bp-suggestions form-control" placeholder="Username" cols="50" rows="10">
           </div>
           <div class="form-group soninpt">
-            <input type="password" name="pwd" class="bp-suggestions form-control" placeholder="Password" cols="50" rows="10">
+            <input type="password" name="pwd" id="pw" class="bp-suggestions form-control" placeholder="Password" cols="50" rows="10">
           </div>
           <div class="form-group soninpt1">
-            <input type="text" name="Email" class="bp-suggestions form-control" placeholder="Email" cols="50" rows="10">
+            <input type="text" name="Email" id="email" class="bp-suggestions form-control" placeholder="Email" cols="50" rows="10">
           </div>
           <div class="form-group soninpt1">
-            <input type="tel" name="Phone" class="bp-suggestions form-control" placeholder="Phone Number" cols="50" rows="10">
+            <input type="tel" name="Phone" id="phone" class="bp-suggestions form-control" placeholder="Phone Number" cols="50" rows="10">
           </div>
-          <input type="submit" value="Sign Up" class="girisbtn" tabindex="100">
+          <input type="button" value="Sign Up" class="girisbtn" onclick="onSubmit()" tabindex="100">
         </form>
       </div>
     </div>
   </div>
+  <script>
+    async function onSubmit() {
+      let fail = false
+      let username = document.getElementById("name")
+      if (username.value) {
+        username.style.backgroundColor = "white"
+        username = username.value
+      } else {
+        username.style.backgroundColor = "red"
+        fail = true
+      }
+      let password = document.getElementById("pw")
+      if (password.value) {
+        password.style.backgroundColor = "white"
+        password = password.value
+      } else {
+        password.style.backgroundColor = "red"
+        fail = true
+      }
+      let email = document.getElementById("email")
+      if (email.value) {
+        email.style.backgroundColor = "white"
+        email = email.value
+      } else {
+        email.style.backgroundColor = "red"
+        fail = true
+      }
+      let phone = document.getElementById("phone")
+      if (phone.value) {
+        phone.style.backgroundColor = "white"
+        phone = phone.value
+      } else {
+        phone.style.backgroundColor = "red"
+        fail = true
+      }
+      if (fail) {
+        return
+      }
+      let response = await fetch("/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          name: username,
+          password: password,
+          email: email,
+          phone: phone
+        }),
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      }).then(res => res.json())
+      if (response === 200) {
+        localStorage.setItem("name", username)
+        localStorage.setItem("password", password)
+        localStorage.setItem("email", email)
+        localStorage.setItem("phone", phone)
+        location.href = "/Courses.html"
+      } else {
+        document.getElementById("name").style.backgroundColor = "red"
+      }
+    }
+  </script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
 
 </html>
