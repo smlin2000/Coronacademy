@@ -24,6 +24,11 @@
       callFrame.join({ url: 'https://collab.daily.co/Breakout' })
     }
     </script>
+  <script style=""> function vidchat2(){
+    callFrame = window.DailyIframe.createFrame();
+      callFrame.join({ url: 'https://collab.daily.co/Breakout2' })
+    }
+    </script>
   <nav class="navbar navbar-expand-lg bg-primary navbar-dark fixed-top">
     <div class="container">
       <img src="assets/img/logo.png" alt="Logo" height="80" width="246">
@@ -148,7 +153,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6 h-25">
+        <div class="col-md-6">
           <div class="table-responsive">
             <table class="table">
               <thead>
@@ -160,17 +165,17 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><a class="fa fa-user fa-fw" href="/Johnsmith932"><b>Johnsmith932</b></a></td>
+                  <td><b>Johnsmith932</b></td>
                   <td>November 10th, 2020</td>
                   <td><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25">&nbsp;(536)</td>
                 </tr>
                 <tr>
-                  <td><a class="fa fa-user fa-fw" href="#"><b>KatKitten</b></a></td>
+                  <td><b>KatKitten</b></td>
                   <td>November 20th, 2020</td>
                   <td><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25">&nbsp;(124)</td>
                 </tr>
                 <tr>
-                  <td><a class="fa fa-user fa-fw" href="#"><b>SolidFacts101</b></a></td>
+                  <td><b>SolidFacts101</b></td>
                   <td>November, 15th, 2020</td>
                   <td><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25">&nbsp;(156)<br></td>
                 </tr>
@@ -178,8 +183,8 @@
             </table>
           </div>
         </div>
-        <div class="col-md-6 h-25">
-          <div class="table-responsive" style="height: 200px; overflow-y: scroll;">
+        <div class="col-md-6 h-25" style="	height: 400px;	width: 560px; overflow-y: scroll;">
+          <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
@@ -217,7 +222,7 @@
                 <tr>
                   <td><b>Kristi Glover</b></td>
                   <td>Just wanted to chat with people while studying.</td>
-                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Join Call</button></td>
+                  <td><button class="btn btn-primary" type="button" onclick="vidchat2()">Join Call</button></td>
                 </tr>
               </tbody>
             </table>
@@ -231,6 +236,30 @@
       <div class="row">
         <div class="col-md-12"></div>
       </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <ul class="nav nav-pills">
+          </ul>
+          <p class="">Didn't find what you were looking for? Search for a tutoring session below!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <form class="form-inline">
+            <div class="input-group">
+              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search" style="width:290px">
+              <div class="input-group-append"><button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button></div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      <div id="searchContainer" style=" border-style: solid; height: 300px; overflow-y: scroll;" class="mt-5"></div>
     </div>
   </div>
   <div class="py-5 bg-dark" style="background-image: url(&quot;assets/img/bg11.jpg&quot;); background-size: cover; background-position: center top;">
@@ -330,7 +359,6 @@
         localStorage.clear()
       }
     }
-
     name = name || "Anon" + (Math.random() * 10000 | 0)
     ws.onopen = conn => {
       ws.send(name)
