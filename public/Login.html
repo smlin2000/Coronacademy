@@ -311,6 +311,9 @@
       background-size: cover;
       background-position: 50% 50%;
     }
+    .error {
+      box-shadow: 0px 0px 4px red;
+    }
   </style>
 </head>
 
@@ -349,7 +352,10 @@
                 username.style.backgroundColor = "white"
                 username = username.value
             } else {
-                username.style.backgroundColor = "red"
+                username.classList.add("error")
+                  setTimeout(() => {
+                    username.classList.remove("error")
+                  }, 5000)
                 fail = true
             }
             let password = document.getElementById("pw")
@@ -357,7 +363,10 @@
                 password.style.backgroundColor = "white"
                 password = password.value
             } else {
-                password.style.backgroundColor = "red"
+                password.classList.add("error")
+                  setTimeout(() => {
+                    username.classList.remove("error")
+                  }, 5000)
                 fail = true
             }
 
@@ -383,8 +392,14 @@
                 localStorage.setItem("phone", response.phone)
                 location.href = "/Homelogout.html"
             } else {
-                document.getElementById("name").style.backgroundColor = "red"
+                document.getElementById("name").classList.add("error")
+                  setTimeout(() => {
+                    document.getElementById("name").classList.remove("error")
+                  }, 5000)
                 document.getElementById("pw").style.backgroundColor = "red"
+                  setTimeout(() => {
+                    document.getElementById("pw").classList.remove("error")
+                  }, 5000)
             }
         }
     </script>
