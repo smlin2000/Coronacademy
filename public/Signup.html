@@ -332,8 +332,9 @@
     </div>
     <div id="textbox">
         <div class="right w-100">
+          <img class="img-fluid d-block mx-auto" src="assets/img/logo.png" width="200px" style="	transform:  translateY(100px) ;">
             <div id="ic">
-                <h2>Sign Up</h2>
+              <h2 class="text-center">Sign Up</h2>
                 <form name="login-form">
                     <div class="form-group">
                         <input type="text" name="log" id="name" class="bp-suggestions form-control" placeholder="Username" cols="50" rows="10">
@@ -352,7 +353,6 @@
             </div>
         </div>
     </div>
-
     <script>
         async function onSubmit() {
             let fail = false
@@ -391,7 +391,6 @@
             if (fail) {
                 return
             }
-
             let response = await fetch("/signup", {
                 method: "POST",
                 body: JSON.stringify({
@@ -404,7 +403,6 @@
                     "Content-Type": "application/json; charset=utf-8"
                 }
             }).then(res => res.json())
-
             if (response === 200) {
                 localStorage.setItem("name", username)
                 localStorage.setItem("password", password)
@@ -417,4 +415,5 @@
         }
     </script>
 </body>
+
 </html>
