@@ -335,7 +335,7 @@
                         </div>
                         <input type="button" value="Login" class="girisbtn" tabindex="100" onclick="onSubmit()">
                     </form>
-                    <a href="Signup.html"><button id="moveleft">Sign Up</button></a>
+                    <a href="SignUp.html"><button id="moveleft">Sign Up</button></a>
                 </div>
             </div>
         </div>
@@ -381,7 +381,7 @@
                 localStorage.setItem("password", response.password)
                 localStorage.setItem("email", response.email)
                 localStorage.setItem("phone", response.phone)
-                location.href = "/Courses.html"
+                location.href = "/Home.html"
             } else {
                 document.getElementById("name").style.backgroundColor = "red"
                 document.getElementById("pw").style.backgroundColor = "red"
