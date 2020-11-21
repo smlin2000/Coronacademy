@@ -41,17 +41,17 @@
         </ul>
         <ul class="navbar-nav flex-row justify-content-center mt-2 mt-md-0">
           <li class="nav-item mx-1">
-            <a class="nav-link" href="#" data-placement="bottom" data-toggle="tooltip" title="Follow us on Twitter">
+            <a class="nav-link" href="https://twitter.com/login?lang=en" data-placement="bottom" data-toggle="tooltip" title="Follow us on Twitter">
               <i class="fa fa-fw fa-twitter fa-2x"></i>
             </a>
           </li>
           <li class="nav-item mx-3 mx-md-1">
-            <a class="nav-link" href="#" data-placement="bottom" data-toggle="tooltip" title="Like us on Facebook">
+            <a class="nav-link" href="https://www.facebook.com/login" data-placement="bottom" data-toggle="tooltip" title="Like us on Facebook">
               <i class="fa fa-fw fa-facebook-official fa-2x"></i>
             </a>
           </li>
           <li class="nav-item ml-1">
-            <a class="nav-link" href="#" data-placement="bottom" data-toggle="tooltip" title="Follow us on Instagram">
+            <a class="nav-link" href="https://www.instagram.com/accounts/login/" data-placement="bottom" data-toggle="tooltip" title="Follow us on Instagram">
               <i class="fa fa-fw fa-instagram fa-2x"></i>
             </a>
           </li>
@@ -65,7 +65,7 @@
       <div class="row">
         <div class="col-md-12">
           <h2 class="mb-2 text-center" id="CollabName"><b>Welcome back, Friend!</b></h2>
-          <script style=""> var localUser = localStorage.getItem('name')
+          <script> var localUser = localStorage.getItem('name')
             if(localUser != null)
             {
               document.getElementById("CollabName").innerHTML = "<b>Welcome back, " + localUser + "!</b>";
@@ -91,7 +91,7 @@
       </div>
     </div>
   </div>
-  <div class="py-5 bg-gray" style="">
+  <div class="py-5 bg-gray">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
@@ -214,7 +214,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="assets/js/parallax.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-  <script style="">
+  <script>
     $(document).ready(function() {
       $('[data-toggle="popover"]').popover();
       $('[data-toggle="tooltip"]').tooltip();
@@ -225,9 +225,14 @@
       });
     });
   </script>
-  <script style="">
+  <script>
     var ws = new WebSocket("ws://localhost:8080")
     var container = document.getElementById("messageContainer")
+    let name = localStorage.getItem("name")
+    name = name === "undefined" ? "Anon" + (Math.random() * 10000 | 0) : name
+    ws.onopen = conn => {
+      ws.send(name)
+    }
     ws.onmessage = msg => {
       let msgs = msg.data.split("\n")
       for (let content of msgs) {
@@ -239,7 +244,7 @@
     var textbox = document.getElementById("textbox")
     textbox.onkeyup = e => {
       if (e.which === 13) { // Enter key
-        ws.send(localStorage.getItem('name') + textbox.value.trim())
+        ws.send(textbox.value.trim())
         textbox.value = ""
       }
     }
