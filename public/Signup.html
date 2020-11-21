@@ -325,32 +325,96 @@
 </head>
 
 <body>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:900,900italic,500,400italic,100,700italic,300,700,500italic,100italic,300italic,400" rel="stylesheet" type="text/css">
-  <div id="fback">
-    <div class="girisback"></div>
-    <div class="kayitback"></div>
-  </div>
-  <div id="textbox">
-    <div class="right w-100" style="">
-      <div id="ic">
-        <h2>Sign Up</h2>
-        <form name="login-form" id="girisyap" method="post" onsubmit="return false;" action="signedIn.html">
-          <div class="form-group">
-            <input type="text" name="log" class="bp-suggestions form-control" placeholder="Username" cols="50" rows="10">
-          </div>
-          <div class="form-group soninpt">
-            <input type="password" name="pwd" class="bp-suggestions form-control" placeholder="Password" cols="50" rows="10">
-          </div>
-          <div class="form-group soninpt1">
-            <input type="text" name="Email" class="bp-suggestions form-control" placeholder="Email" cols="50" rows="10">
-          </div>
-          <div class="form-group soninpt1">
-            <input type="tel" name="Phone" class="bp-suggestions form-control" placeholder="Phone Number" cols="50" rows="10">
-          </div>
-          <input type="submit" value="Sign Up" class="girisbtn" tabindex="100">
-        </form>
-      </div>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:900,900italic,500,400italic,100,700italic,300,700,500italic,100italic,300italic,400" rel="stylesheet" type="text/css">
+    <div id="fback">
+        <div class="girisback"></div>
+        <div class="kayitback"></div>
     </div>
-  </div>
+    <div id="textbox">
+        <div class="right w-100">
+            <div id="ic">
+                <h2>Sign Up</h2>
+                <form name="login-form">
+                    <div class="form-group">
+                        <input type="text" name="log" id="name" class="bp-suggestions form-control" placeholder="Username" cols="50" rows="10">
+                    </div>
+                    <div class="form-group soninpt">
+                        <input type="password" name="pwd" id="pw" class="bp-suggestions form-control" placeholder="Password" cols="50" rows="10">
+                    </div>
+                    <div class="form-group soninpt1">
+                        <input type="text" name="Email" id="email" class="bp-suggestions form-control" placeholder="Email" cols="50" rows="10">
+                    </div>
+                    <div class="form-group soninpt1">
+                        <input type="tel" name="Phone" id="phone" class="bp-suggestions form-control" placeholder="Phone Number" cols="50" rows="10">
+                    </div>
+                    <input type="button" value="Sign Up" class="girisbtn" onclick="onSubmit()" tabindex="100">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function onSubmit() {
+            let fail = false
+            let username = document.getElementById("name")
+            if (username.value) {
+                username.style.backgroundColor = "white"
+                username = username.value
+            } else {
+                username.style.backgroundColor = "red"
+                fail = true
+            }
+            let password = document.getElementById("pw")
+            if (password.value) {
+                password.style.backgroundColor = "white"
+                password = password.value
+            } else {
+                password.style.backgroundColor = "red"
+                fail = true
+            }
+            let email = document.getElementById("email")
+            if (email.value) {
+                email.style.backgroundColor = "white"
+                email = email.value
+            } else {
+                email.style.backgroundColor = "red"
+                fail = true
+            }
+            let phone = document.getElementById("phone")
+            if (phone.value) {
+                phone.style.backgroundColor = "white"
+                phone = phone.value
+            } else {
+                phone.style.backgroundColor = "red"
+                fail = true
+            }
+            if (fail) {
+                return
+            }
+
+            let response = await fetch("/signup", {
+                method: "POST",
+                body: JSON.stringify({
+                    name: username,
+                    password: password,
+                    email: email,
+                    phone: phone
+                }),
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                }
+            }).then(res => res.json())
+
+            if (response === 200) {
+                localStorage.setItem("name", username)
+                localStorage.setItem("password", password)
+                localStorage.setItem("email", email)
+                localStorage.setItem("phone", phone)
+                location.href = "/Courses.html"
+            } else {
+                document.getElementById("name").style.backgroundColor = "red"
+            }
+        }
+    </script>
 </body>
 </html>

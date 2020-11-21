@@ -46,7 +46,7 @@ app.post("/login", async function(req, res) {
 	let body = req.body
 	let user = users[body.name]
 	if (user && user.password === body.password) {
-		res.end("true")
+		res.end(JSON.stringify(user))
 		return
 	}
 	res.end("false")
@@ -54,9 +54,9 @@ app.post("/login", async function(req, res) {
 app.post("/signup", async function(req, res) {
 	let body = req.body
 	if (users[body.name]) {
-		res.end("Name already taken")
-		return;
+		res.end("400")
+	} else {
+		users[body.name] = body
+		res.end("200")
 	}
-	users[body.name] = body
-	res.end(JSON.stringify(body))
 })
