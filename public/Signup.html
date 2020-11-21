@@ -136,6 +136,12 @@ h2 {
     position: absolute;
 }
 
+.imageLink{
+    left: 0;
+    bottom: 0;
+    position: absolute;
+}
+
 .right {
     width: 50%;
     height: 100%;
@@ -313,7 +319,7 @@ form#girisyap .girisbtn:hover {
     left: 0;
     width: 50%;
     height: 100%;
-    background: url(https://www.uark.edu/_resources/images/visit-our-campus/RS24342_8836_Campus_Aerial-2013-179-visit.jpg);
+    background: url(https://i.pinimg.com/originals/2b/1e/76/2b1e7632eac762669c12e5410201d4f9.jpg);
     background-size: cover;
     background-position: 50% 50%;
 }
@@ -324,7 +330,7 @@ form#girisyap .girisbtn:hover {
 		<link href='https://fonts.googleapis.com/css?family=Roboto:900,900italic,500,400italic,100,700italic,300,700,500italic,100italic,300italic,400' rel='stylesheet' type='text/css'>
 
 <div id="fback"><div class="girisback"></div><div class="kayitback"></div></div>
-
+<a class = "imageLink" href="https://i.pinimg.com/originals/2b/1e/76/2b1e7632eac762669c12e5410201d4f9.jpg">https://i.pinimg.com/originals/2b/1e/76/2b1e7632eac762669c12e5410201d4f9.jpg</a>
 <div id="textbox">
   <div class="toplam">
 
@@ -362,23 +368,28 @@ form#girisyap .girisbtn:hover {
 </div>
 
 <div class="right">
-  <div id="ic">
-    <h2>Sign Up</h2>
-    <form name="login-form" id="girisyap" id="sidebar-user-login" method="post" onsubmit="return false;" action = "signedIn.html">
-
-      <div class="form-group">
-        <label class="control-label" for="inputNormal">Username</label>
-        <input type="text" name="log" class="bp-suggestions form-control" cols="50" rows="10" ></input>
-      </div>
-    <div class="form-group soninpt">
-      <label class="control-label" for="inputNormal">Password</label>
-      <input type="password" name="pwd" class="bp-suggestions form-control" cols="50" rows="10"></input>
-  </div>
-  <input type="submit" value="Sign Up" class="girisbtn" tabindex="100"/>
-  </form>
-
-
-</div>
+    <div id="ic">
+        <h2>Sign Up</h2>
+        <form name="login-form" id="girisyap" id="sidebar-user-login" method="post" onsubmit="return false;" action = "signedIn.html">
+            <div class="form-group">
+                <label class="control-label" for="inputNormal">Username</label>
+                <input type="text" name="log" class="bp-suggestions form-control" cols="50" rows="10" ></input>
+            </div>
+            <div class="form-group soninpt">
+                <label class="control-label" for="inputNormal">Password</label>
+                <input type="password" name="pwd" class="bp-suggestions form-control" cols="50" rows="10"></input>
+            </div>
+            <div class="form-group soninpt1">
+                <label class="control-label" for="inputNormal">Email</label>
+                <input type="text" name="Email" class="bp-suggestions form-control" cols="50" rows="10"></input>
+            </div>
+            <div class="form-group soninpt1">
+                <label class="control-label" for="inputNormal">Phone Number</label>
+                <input type="tel" name="Phone" class="bp-suggestions form-control" cols="50" rows="10"></input>
+            </div>
+             <input type="submit" value="Sign Up" class="girisbtn" tabindex="100"/>
+         </form>
+    </div>
 </div>
 
 </div>
