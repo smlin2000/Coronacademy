@@ -71,7 +71,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h4 class="">Topic Statement:</h4>
+          <h4 class="">About Algebra</h4>
         </div>
         <div class="col-md-6">
           <h4 class="">VIDEO:</h4>
@@ -79,9 +79,11 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <p class="">Paragraph. Then, my friend, when darkness overspreads my eyes, and heaven and earth seem to dwell in my soul and absorb its power, like the form of a beloved mistress, then I often think with longing.</p>
+          <p class="">&nbsp; &nbsp; &nbsp; &nbsp;Algebra is one of the earliest branches of mathematics that includes many ways to think about numbers such as complex numbers, vectors, and matrices.<br><br>Algebra Information<br><br><br>Algebra Information<br><br><br>Algebra Information<br><br><br>Algebra Information<br><br><br>Algebra Information<br><br><br>Algebra Information<br><br><br>Algebra Information<br><br><br>Algebra Information<br><br><br>Algebra Information</p>
         </div>
-        <div class="col-md-6"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>
+        <div class="col-md-6">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/_LDR1_Prveo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -96,10 +98,58 @@
         </div>
       </div>
       <div class="row">
-        <div id="messageContainer" class="col-md-6" style="width: 20%; height: 46%; overflow-y: scroll;">
+        <div>
+          <div id="messageContainer" style=" border-style: solid; width: 580px; height: 400px; overflow-y: scroll;">
+          </div>
+          <input type="text" id="textbox" placeholder="Input Textbox" style="width:580px; position:relative; bottom:0px;"><br><br>
         </div>
-        <input type="text" id="textbox" placeholder="Input Textbox" style="width:35%; position: absolute; bottom:-21%;"><br><br>
-        <div class="col-md-6" style="width: 20%; height: 46%; overflow-y: scroll;"></div>
+        <div style="border-style: solid; width: 560px; height: 400px; overflow-y: scroll;">
+          <div style="border-style: groove; width: 98%; height: 20%; margin: 10px;">
+            <p class="" contenteditable="true"><b>&nbsp;Algebra Study Session (November 23rd, 2020 @ 5:00 PM)</b><br>&nbsp; &nbsp; &nbsp; &nbsp; Hey everyone, let's meet together to study Algebra together. I'll be&nbsp; &nbsp;bringing a review that I obtained last year that may help us on the test.</p>
+          </div>
+          <div style="border-style: groove; width: 98%; height: 20%; margin: 10px;">
+            <p class=""><b>&nbsp;Algebra Test (November 25th, 2020 @ 9:00 AM)</b><br>&nbsp; &nbsp; &nbsp; &nbsp; This is a reminder that the test will be at 9:00 AM in class on&nbsp; &nbsp;Wednesday. Please make sure you mark your calendar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="">Top Contributors</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Last Updated</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Johnsmith932</td>
+                  <td>November 10th, 2020</td>
+                  <td><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"></td>
+                </tr>
+                <tr>
+                  <td>KatKitten</td>
+                  <td>November 20th, 2020</td>
+                  <td><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"></td>
+                </tr>
+                <tr>
+                  <td>SolidFacts101</td>
+                  <td>November, 15th, 2020</td>
+                  <td><img src="assets/img/star.png" alt="Star" height="25" width="25"><img src="assets/img/star.png" alt="Star" height="25" width="25"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -230,9 +280,12 @@
     var ws = new WebSocket("ws://localhost:8080")
     var container = document.getElementById("messageContainer")
     ws.onmessage = msg => {
-      var newMessage = document.createElement("div")
-      newMessage.textContent = msg.data
-      container.appendChild(newMessage)
+      let msgs = msg.data.split("\n")
+      for (let content of msgs) {
+        var newMessage = document.createElement("div")
+        newMessage.textContent = content
+        container.appendChild(newMessage)
+      }
     }
     var textbox = document.getElementById("textbox")
     textbox.onkeyup = e => {
