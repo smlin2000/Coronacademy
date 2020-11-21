@@ -355,6 +355,8 @@
   </div>
   <script>
     async function onSubmit() {
+
+
       let fail = false
       let username = document.getElementById("name")
       if (username.value) {
@@ -408,10 +410,13 @@
         localStorage.setItem("password", password)
         localStorage.setItem("email", email)
         localStorage.setItem("phone", phone)
-        location.href = "/Courses.html"
+        location.href = "/Home.html"
       } else {
         document.getElementById("name").style.backgroundColor = "red"
+	
       }
+
+	
     }
   </script>
 </body>
