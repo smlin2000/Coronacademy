@@ -43,8 +43,20 @@ server.listen(process.env.PORT || 8080, () => {
 
 var users = {}
 app.post("/login", async function(req, res) {
-	res.end(req.body.name)
+	let body = req.body
+	let user = users[body.name]
+	if (user && user.password === body.password) {
+		res.end("true")
+		return
+	}
+	res.end("false")
 })
 app.post("/signup", async function(req, res) {
-	res.end(req.body.name)
+	let body = req.body
+	if (users[body.name]) {
+		res.end("Name already taken")
+		return;
+	}
+	users[body.name] = body
+	res.end(JSON.stringify(body))
 })
