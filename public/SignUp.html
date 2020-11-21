@@ -7,11 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="styles/default.css">
-  <script> function myFunction(){
-            alert("User created");
-        }
-    
-    </script>
   <style>
     body {
       font-size: 12px;
@@ -321,6 +316,10 @@
       background-size: cover;
       background-position: 50% 50%;
     }
+
+    .error {
+      box-shadow: 0px 0px 4px red;
+    }
   </style>
 </head>
 
@@ -337,7 +336,7 @@
         <h2 class="text-center">Sign Up</h2>
         <form name="login-form">
           <div class="form-group">
-            <input type="text" name="log" id="name" class="bp-suggestions form-control" placeholder="Username" cols="50" rows="10">
+            <input type="text" name="log" id="name" class="bp-suggestions form-control" placeholder="Username" cols="50" rows="10" style="">
           </div>
           <div class="form-group soninpt">
             <input type="password" name="pwd" id="pw" class="bp-suggestions form-control" placeholder="Password" cols="50" rows="10">
@@ -350,10 +349,11 @@
           </div>
           <input type="button" value="Sign Up" class="girisbtn" onclick="onSubmit()" tabindex="100">
         </form>
+        <a href="Login.html"><button id="moveleft" style="	transform:  translateX(-45px) ;" >Log In</button></a>
       </div>
     </div>
   </div>
-  <script>
+  <script style="">
     async function onSubmit() {
       let fail = false
       let username = document.getElementById("name")
@@ -361,7 +361,10 @@
         username.style.backgroundColor = "white"
         username = username.value
       } else {
-        username.style.backgroundColor = "red"
+        username.classList.add("error")
+        setTimeout(() => {
+          username.classList.remove("error")
+        }, 5000)
         fail = true
       }
       let password = document.getElementById("pw")
@@ -369,7 +372,10 @@
         password.style.backgroundColor = "white"
         password = password.value
       } else {
-        password.style.backgroundColor = "red"
+        password.classList.add("error")
+        setTimeout(() => {
+          password.classList.remove("error")
+        }, 5000)
         fail = true
       }
       let email = document.getElementById("email")
@@ -377,7 +383,10 @@
         email.style.backgroundColor = "white"
         email = email.value
       } else {
-        email.style.backgroundColor = "red"
+        email.classList.add("error")
+        setTimeout(() => {
+          email.classList.remove("error")
+        }, 5000)
         fail = true
       }
       let phone = document.getElementById("phone")
@@ -385,7 +394,10 @@
         phone.style.backgroundColor = "white"
         phone = phone.value
       } else {
-        phone.style.backgroundColor = "red"
+        phone.classList.add("error")
+        setTimeout(() => {
+          phone.classList.remove("error")
+        }, 5000)
         fail = true
       }
       if (fail) {
@@ -408,12 +420,16 @@
         localStorage.setItem("password", password)
         localStorage.setItem("email", email)
         localStorage.setItem("phone", phone)
-        location.href = "/Courses.html"
+        location.href = "/Homelogout.html"
       } else {
-        document.getElementById("name").style.backgroundColor = "red"
+        document.getElementById("name").classList.add("error")
+        setTimeout(() => {
+          document.getElementById("name").classList.remove("error")
+        }, 5000)
       }
     }
   </script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
 
 </html>
