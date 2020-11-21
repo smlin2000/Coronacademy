@@ -24,11 +24,6 @@
       callFrame.join({ url: 'https://collab.daily.co/Breakout' })
     }
     </script>
-  <script style=""> function vidchat2(){
-    callFrame = window.DailyIframe.createFrame();
-      callFrame.join({ url: 'https://collab.daily.co/Breakout2' })
-    }
-    </script>
   <nav class="navbar navbar-expand-lg bg-primary navbar-dark fixed-top">
     <div class="container">
       <img src="assets/img/logo.png" alt="Logo" height="80" width="246">
@@ -38,31 +33,31 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbarNowUIKitFree">
         <ul class="navbar-nav">
           <li class="nav-item mx-1 align-items-center d-flex justify-content-center">
-            <a class="nav-link" href="/index.html">HOME</a>
+            <a class="nav-link" href="/Home.html">HOME</a>
           </li>
           <li class="nav-item mx-1 align-items-center d-flex justify-content-center">
             <a class="nav-link" href="/Courses.html">COURSES</a>
           </li>
           <li class="nav-item mx-1 align-items-center d-flex justify-content-center">
-            <a class="nav-link" href="#"> PROFILE<br></a>
+            <a class="nav-link" href="Profile.html"> PROFILE<br></a>
           </li>
           <li class="nav-item mx-1 align-items-center d-flex justify-content-center">
-            <a class="nav-link" href="#"> LOGOUT<br></a>
+            <a class="nav-link" href="Login.html" id="login"> LOGIN<br></a>
           </li>
         </ul>
         <ul class="navbar-nav flex-row justify-content-center mt-2 mt-md-0">
           <li class="nav-item mx-1">
-            <a class="nav-link" href="#" data-placement="bottom" data-toggle="tooltip" title="Follow us on Twitter">
+            <a class="nav-link" href="https://twitter.com/login?lang=en" data-placement="bottom" data-toggle="tooltip" title="Follow us on Twitter">
               <i class="fa fa-fw fa-twitter fa-2x"></i>
             </a>
           </li>
           <li class="nav-item mx-3 mx-md-1">
-            <a class="nav-link" href="#" data-placement="bottom" data-toggle="tooltip" title="Like us on Facebook">
+            <a class="nav-link" href="https://www.facebook.com/login" data-placement="bottom" data-toggle="tooltip" title="Like us on Facebook">
               <i class="fa fa-fw fa-facebook-official fa-2x"></i>
             </a>
           </li>
           <li class="nav-item ml-1">
-            <a class="nav-link" href="#" data-placement="bottom" data-toggle="tooltip" title="Follow us on Instagram">
+            <a class="nav-link" href="https://www.instagram.com/accounts/login/" data-placement="bottom" data-toggle="tooltip" title="Follow us on Instagram">
               <i class="fa fa-fw fa-instagram fa-2x"></i>
             </a>
           </li>
@@ -222,7 +217,7 @@
                 <tr>
                   <td><b>Kristi Glover</b></td>
                   <td>Just wanted to chat with people while studying.</td>
-                  <td><button class="btn btn-primary" type="button" onclick="vidchat2()">Join Call</button></td>
+                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Join Call</button></td>
                 </tr>
               </tbody>
             </table>
@@ -337,7 +332,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="assets/js/parallax.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-  <script style="">
+  <script>
     $(document).ready(function() {
       $('[data-toggle="popover"]').popover();
       $('[data-toggle="tooltip"]').tooltip();
@@ -348,9 +343,22 @@
       });
     });
   </script>
-  <script style="">
+  <script>
     var ws = new WebSocket("ws://localhost:8080")
     var container = document.getElementById("messageContainer")
+    let name = localStorage.getItem("name")
+    let logButton = document.getElementById("login")
+    if (name && name !== "undefined") {
+      logButton.innerHTML = " LOGOUT"
+      logButton.onclick = e => {
+        localStorage.clear()
+      }
+    }
+
+    name = name || "Anon" + (Math.random() * 10000 | 0)
+    ws.onopen = conn => {
+      ws.send(name)
+    }
     ws.onmessage = msg => {
       let msgs = msg.data.split("\n")
       for (let content of msgs) {
@@ -367,7 +375,6 @@
       }
     }
   </script>
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
 
 </html>
