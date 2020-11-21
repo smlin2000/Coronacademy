@@ -18,22 +18,6 @@
 </head>
 
 <body class="">
-  <script style=""> var ws = new WebSocket("ws://localhost:8080")
-    var container = document.getElementById("messageContainer")
-    ws.onmessage = msg => {
-        var newMessage = document.createElement("div")
-        newMessage.textContent = msg.data
-        container.appendChild(newMessage)
-    }
-
-    var textbox = document.getElementById("textbox")
-    textbox.onkeyup = e => {
-        if (e.which === 13) { // Enter key
-            ws.send(textbox.value.trim())
-            textbox.value = ""
-        }
-    }
-</script>
   <nav class="navbar navbar-expand-lg bg-primary navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" title="Designed by Invision. Coded by Creative Tim and Pingendo" data-placement="bottom" data-toggle="tooltip" href="#">COLLAB</a>
@@ -43,10 +27,10 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbarNowUIKitFree">
         <ul class="navbar-nav">
           <li class="nav-item mx-1 align-items-center d-flex justify-content-center">
-            <a class="nav-link" href="../public/index.html">HOME</a>
+            <a class="nav-link" href="/index.html">HOME</a>
           </li>
           <li class="nav-item mx-1 align-items-center d-flex justify-content-center">
-            <a class="nav-link" href="../public/Courses.html">COURSES</a>
+            <a class="nav-link" href="/Courses.html">COURSES</a>
           </li>
           <li class="nav-item mx-1 align-items-center d-flex justify-content-center">
             <a class="nav-link" href="#"> PROFILE<br></a>
@@ -112,7 +96,9 @@
         </div>
       </div>
       <div class="row">
-        <div id="messageContainer" class="col-md-6" style="width: 200px; height: 400px; overflow-y: scroll;"></div>
+        <div id="messageContainer" class="col-md-6" style="width: 200px; height: 400px; overflow-y: scroll;">
+          <input type="text" id="textbox" style="width:100%"><br><br>
+        </div>
         <div class="col-md-6" style="width: 200px; height: 400px; overflow-y: scroll;"></div>
       </div>
     </div>
@@ -239,6 +225,22 @@
         todayHighlight: true
       });
     });
+  </script>
+  <script style="">
+    var ws = new WebSocket("ws://localhost:8080")
+    var container = document.getElementById("messageContainer")
+    ws.onmessage = msg => {
+      var newMessage = document.createElement("div")
+      newMessage.textContent = msg.data
+      container.appendChild(newMessage)
+    }
+    var textbox = document.getElementById("textbox")
+    textbox.onkeyup = e => {
+      if (e.which === 13) { // Enter key
+        ws.send(textbox.value.trim())
+        textbox.value = ""
+      }
+    }
   </script>
   <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
