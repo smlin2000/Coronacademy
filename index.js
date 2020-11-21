@@ -40,6 +40,15 @@ var users = {
 			CS: "Learning"
 		},
 	},
+	"johnsmith932": {
+		name: "JohnSmith932",
+		password: "12345",
+		courses: {
+			Algebra: "Mastered",
+			Geometry: "Mastered",
+			Calculus: "Mastered",
+		}
+	}
 }
 wss.on('connection', async ws => {
 	connections.push(ws)
