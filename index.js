@@ -16,6 +16,7 @@ var messageHistory = []
 var users = {
 	"willard": {
 		name: "Willard",
+		desc: "Teaching Algebra\nLearning Calculus",
 		password: "12345",
 		courses: {
 			Algebra: "Mastered",
@@ -24,6 +25,7 @@ var users = {
 	},
 	"lily": {
 		name: "Lily",
+		desc: "Teaching Algebra\nLearning Combinatorics and CS",
 		password: "12345",
 		courses: {
 			Algebra: "Mastered",
@@ -33,6 +35,7 @@ var users = {
 	},
 	"geoffrey": {
 		name: "Geoffrey",
+		desc: "Teaching Algebra\nLearning JavaScript",
 		password: "12345",
 		courses: {
 			Algebra: "Mastered",
@@ -95,4 +98,22 @@ app.post("/signup", async function(req, res) {
 		users[name] = body
 		res.end("200")
 	}
+})
+
+app.get("/online", async function(req, res) {
+	let online = []
+	for (let ws of connections.filter(c => c.name)) {
+		if (ws.user) {
+			online.push({
+				name: ws.user.name,
+				desc: ws.user.desc
+			})
+		} else {
+			online.push({
+				name: ws.name,
+				desc: "Logged Out"
+			})
+		}
+	}
+	res.send(JSON.stringify(online))
 })

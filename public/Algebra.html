@@ -188,36 +188,36 @@
                   <th></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="online">
                 <tr>
                   <td><b>John Smalls</b></td>
                   <td>Exam review for the upcoming test!</td>
-                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Join Call</button></td>
+                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Call</button></td>
                 </tr>
                 <tr>
                   <td><b>Lazlo</b></td>
                   <td>Can anyone help explain the most recent homework to me?</td>
-                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Join Call</button></td>
+                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Call</button></td>
                 </tr>
                 <tr>
                   <td><b>StudyKing</b></td>
                   <td>Just chilling and studying</td>
-                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Join Call</button></td>
+                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Call</button></td>
                 </tr>
                 <tr>
                   <td><b>Lia Nnenna</b></td>
                   <td>Working on the semester project.</td>
-                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Join Call</button></td>
+                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Call</button></td>
                 </tr>
                 <tr>
                   <td><b>Elias Kim</b></td>
                   <td>Anyone want to review some old lectures?</td>
-                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Join Call</button></td>
+                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Call</button></td>
                 </tr>
                 <tr>
                   <td><b>Kristi Glover</b></td>
                   <td>Just wanted to chat with people while studying.</td>
-                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Join Call</button></td>
+                  <td><button class="btn btn-primary" type="button" onclick="vidchat()">Call</button></td>
                 </tr>
               </tbody>
             </table>
@@ -374,6 +374,31 @@
         textbox.value = ""
       }
     }
+    let online = document.getElementById("online")
+    fetch("online").then(res => res.json()).then(data => {
+      console.log(data)
+      let users = data;
+      users.forEach(user => {
+        let tr = document.createElement("tr")
+        let td = document.createElement("td")
+        let name = document.createElement("b")
+        name.innerText = user.name
+        td.appendChild(name)
+        tr.appendChild(td)
+        td = document.createElement("td")
+        td.innerText = user.desc
+        tr.appendChild(td)
+        td = document.createElement("td")
+        let button = document.createElement("button")
+        button.className = "btn btn-primary"
+        button.onclick = vidchat
+        button.innerText = "Call"
+        td.appendChild(button)
+        tr.appendChild(td)
+        online.appendChild(tr)
+        console.log(user)
+      })
+    })
   </script>
 </body>
 
