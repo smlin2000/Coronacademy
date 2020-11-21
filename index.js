@@ -44,7 +44,7 @@ server.listen(process.env.PORT || 8080, () => {
 var users = {}
 app.post("/login", async function(req, res) {
 	let body = req.body
-	let user = users[body.name]
+	let user = users[body.name.toLowerCase()]
 	if (user && user.password === body.password) {
 		res.end(JSON.stringify(user))
 		return
@@ -53,10 +53,11 @@ app.post("/login", async function(req, res) {
 })
 app.post("/signup", async function(req, res) {
 	let body = req.body
-	if (users[body.name]) {
+	let name = body.name.toLowerCase()
+	if (users[name]) {
 		res.end("400")
 	} else {
-		users[body.name] = body
+		users[name] = body
 		res.end("200")
 	}
 })
