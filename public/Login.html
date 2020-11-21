@@ -392,7 +392,8 @@
 
             if (response) {
                 for (let data in response) {
-                    localStorage.setItem(data, JSON.stringify(response[data]))
+                    let thing = response[data]
+                    localStorage.setItem(data, typeof thing === "object" ? JSON.stringify(thing) : thing)
                 }
 
                 location.href = "/Home.html"
